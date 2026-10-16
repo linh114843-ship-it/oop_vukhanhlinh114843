@@ -8,7 +8,7 @@ private:
   int parkingDur;
   double parkingFee;
 public:
-  Vehicle(string id, char type, int entry, int dur){
+  Veh(string id, char type, int entry, int dur){
       vehID = id;
       vehType = type;
       entTime = entry;
@@ -26,8 +26,9 @@ void Veh_nhap(){
   cout<<"Xe: "; cin >> vehID;
   cout<<"| Loại: "; cin >> vehType;
   cout<<"| Thời gian(h): "; cin >> parkingDur;
-  cout<<"| Phi(VND): "; cin >> calcFee();
+  calcFee();
 }
 void Veh_xuat(){
   cout<<"Xe: "<<vehID <<"| Loại: "<<vehType <<"| Thời gian: "<<parkingDur <<"h"<<"| Phi: "<<calcFee()<<"VND\n";
 }
+};
