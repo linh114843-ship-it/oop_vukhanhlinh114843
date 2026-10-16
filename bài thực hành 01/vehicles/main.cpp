@@ -8,11 +8,12 @@ private:
   int parkingDur;
   double parkingFee;
 public:
-  Veh(string id, char type, int entry, int dur){
+  Veh(string id = "", char type = 'C', int entry = 0, int dur = 0){
       vehID = id;
       vehType = type;
       entTime = entry;
       parkingDur = dur;
+      parkingFee = 0;
   }
   double calcFee(){
     double rate;
