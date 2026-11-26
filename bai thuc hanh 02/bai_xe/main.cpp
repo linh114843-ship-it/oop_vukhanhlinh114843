@@ -1,22 +1,51 @@
-class bai_xe {
-private: 
-int ma_bai;
-char kich_thuoc;
-phuong_tien ds_xe[3];//Mang tinh toi da 3 phuong tien
-int so_luong; //so luong xe hien co trong bai
+#include <iostream>
+#include <string>
+
+class Vehicle {
+private:
+    std::string vehicleID;
+    std::string vehicleType;
+    std::string entryTime; 
+    double parkingDuration;
+    double parkingFee;
 
 public:
-bai_xe();
-bai_xe(int ma,char kt);
 
-int lay_ma() const;
-bool them(phuong_tien v);
-bool xoa(int ma_xe);
-bool chua(int ma_xe) const;
-void hien_thi() const;
-bool co_loai(string loai, int& dem, double& tong) const;
+    Vehicle() : vehicleID(""), vehicleType(""), entryTime(""), parkingDuration(0.0), parkingFee(0.0) {}
+
+    Vehicle(std::string id, std::string type, std::string time, double duration)
+        : vehicleID(id), vehicleType(type), entryTime(time), parkingDuration(duration), parkingFee(0.0) {
+        calculateFee();
+    }
+
+    // Getters
+    std::string getVehicleID() const { return vehicleID; }
+    std::string getVehicleType() const { return vehicleType; }
+    std::string getEntryTime() const { return entryTime; }
+    double getParkingDuration() const { return parkingDuration; }
+    double getParkingFee() const { return parkingFee; }
+
+    // Setters
+    void setVehicleID(const std::string& id) { vehicleID = id; }
+    void setVehicleType(const std::string& type) { vehicleType = type; }
+    void setEntryTime(const std::string& time) { entryTime = time; }
+    void setParkingDuration(double duration) { 
+        parkingDuration = duration; 
+        calculateFee();
+    }    
+    void calculateFee() {
+        if (vehicleType == "Car") {
+            parkingFee = parkingDuration * 20000;
+        } else {
+            parkingFee = parkingDuration * 5000;
+        }
+    }
+
+    void display() const {
+        std::cout << "ID: " << vehicleID 
+                  << " | Loai: " << vehicleType 
+                  << " | Gio vao: " << entryTime 
+                  << " | Thoi gian: " << parkingDuration << "h"
+                  << " | Phi: " << parkingFee << " VND\n";
+    }
 };
-
-//ham khoi tao
-bai_xe::bai_xe() : ma_bai(0), kich_thuoc('S), so_luong(0) {}
-bai_xe::bai_xe(int ma
